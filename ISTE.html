@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISTE HIT SC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+            background: #fff;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        /* navbar */
+        header {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #eeeeee;
+        }
+        nav {
+            max-width: 1250px;
+            height: 80px;
+            margin: auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+        }
+        .logo span {
+            color: #ff5a1f;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        nav ul li a {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff5a1f;
+        }
+        .join-btn {
+            padding: 12px 23px;
+            background: #111;
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .join-btn:hover {
+            background: #ff5a1f;
+        }
+
+        /* intro */
+        .hero {
+            min-height: 700px;
+            padding: 150px 8% 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 70px;
+            background: linear-gradient(120deg,
+                    #ffffff,
+                    #f7f7f7);
+        }
+        .hero-content {
+            width: 55%;
+        }
+        .small-title {
+            color: #ff5a1f;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 68px;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+        .hero-description {
+            max-width: 550px;
+            color: #666;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .primary-btn {
+            background: #111;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .primary-btn:hover {
+            background: #ff5a1f;
+        }
+        .secondary-btn {
+            border: 1px solid #ccc;
+            padding: 14px 25px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .secondary-btn:hover {
+            background: #111;
+            color: white;
+        }
+        .hero-image {
+            width: 45%;
+        }
+        .hero-image img {
+            height: 430px;
+            object-fit: cover;
+            border-radius: 20px;
+            background: #e5e5e5;
+        }
+
+        /* stats */
+        .stats {
+            background: #111;
+            color: white;
+
+            padding: 55px 8%;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat h2 {
+            color: #ff6b2c;
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+        .stat p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        /* common section */
+        section {
+            padding: 100px 8%;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title span {
+            color: #ff5a1f;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        /* about */
+        .about {
+            text-align: center;
+        }
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+        }
+        .about-content h2 {
+            font-size: 48px;
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+        .about-content p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* mission and vission */
+        .mission {
+            background: #f7f7f7;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .mission-card {
+            background: white;
+            padding: 45px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        .mission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+        .mission-card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .mission-card p {
+            color: #666;
+        }
+
+        /* features */
+        .features {
+            background: #fff;
+        }
+        .feature-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .feature-card {
+            padding: 35px;
+            background: #f8f8f8;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: #111;
+            color: white;
+        }
+        .feature-card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+        }
+        .feature-card:hover p {
+            color: #ccc;
+        }
+
+        /*Events*/
+        .events {
+            background: #f7f7f7;
+        }
+        .event-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .event-card {
+            overflow: hidden;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .event-image {
+            height: 220px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+        .event-card h3 {
+            font-size: 22px;
+            margin: 25px 25px 10px;
+        }
+        .event-card p {
+            color: #666;
+            font-size: 14px;
+            margin: 0 25px 20px;
+        }
+        .event-card a {
+            display: inline-block;
+            margin: 0 25px 25px;
+            color: #ff5a1f;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /*CTA*/
+        .cta {
+            padding: 90px 8%;
+            text-align: center;
+            background: #111;
+            color: white;
+        }
+        .cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+        .cta p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .cta a {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #ff5a1f;
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .cta a:hover {
+            background: white;
+            color: #111;
+        }
+
+        /* footer tab */
+        footer {
+            background: #0b0b0b;
+            color: white;
+            padding: 70px 8% 25px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+        }
+        footer h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        footer h3 {
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+        footer p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        footer ul {
+            list-style: none;
+        }
+        footer ul li {
+            margin-bottom: 10px;
+        }
+        footer ul li a {
+            color: #aaa;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        footer ul li a:hover {
+            color: #ff5a1f;
+        }
+        .social a {
+            display: block;
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+        .social a:hover {
+            color: #ff5a1f;
+        }
+        .copyright {
+            grid-column: 1 / -1;
+            padding-top: 25px;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <!-- navbar -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                ISTE <span>HIT SC</span>
+            </a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#features">Activities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="join-btn">
+                Join Us
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- into -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="small-title">
+                    ISTE HIT STUDENT CHAPTER
+                </p>
+                <h1>
+                    Innovating,<br>
+                    Educating,<br>
+                    Empowering
+                </h1>
+                <p class="hero-description">
+                    The official technical society of
+                    Haldia Institute of Technology.
+                    We create opportunities for students
+                    to learn, innovate and grow.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#events" class="primary-btn">
+                        Explore Events
+                    </a>
+                    <a href="#about" class="secondary-btn">
+                        Mission & Vision
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="event-image">
+                    ISTE HIT SC
+                </div>
+            </div>
+        </section>
+
+        <!-- statbar -->
+        <section class="stats">
+            <div class="stat">
+                <h2>400+</h2>
+                <p>Active Members</p>
+            </div>
+            <div class="stat">
+                <h2>20+</h2>
+                <p>Events Conducted</p>
+            </div>
+            <div class="stat">
+                <h2>50+</h2>
+                <p>Alumni Network</p>
+            </div>
+            <div class="stat">
+                <h2>10+</h2>
+                <p>Years of Excellence</p>
+            </div>
+        </section>
+
+        <!-- about us -->
+        <section class="about" id="about">
+            <div class="about-content">
+                <p class="small-title">
+                    ABOUT US
+                </p>
+                <h2>
+                    Building the Engineers
+                    of Tomorrow
+                </h2>
+                <p>
+                    ISTE HIT Student Chapter is a technical
+                    society dedicated to creating a platform
+                    for students to learn, innovate and grow.
+                </p>
+                <p>
+                    Through workshops, hackathons, technical
+                    events and collaborative initiatives,
+                    we encourage students to transform their
+                    ideas into meaningful solutions.
+                </p>
+            </div>
+        </section>
+
+        <!-- mission and vission -->
+        <section class="mission">
+            <div class="mission-card">
+                <h2>
+                    Our Mission
+                </h2>
+                <p>
+                    To promote technical education,
+                    innovation, creativity and professional
+                    development among students.
+                </p>
+            </div>
+            <div class="mission-card">
+                <h2>
+                    Our Vision
+                </h2>
+                <p>
+                    To build a community of technically
+                    skilled, innovative and socially
+                    responsible engineers.
+                </p>
+            </div>
+        </section>
+
+        <!-- features -->
+        <section class="features" id="features">
+            <div class="section-title">
+                <span>
+                    WHAT WE OFFER
+                </span>
+                <h2>
+                    Grow With Us
+                </h2>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>
+                        Practical Learning
+                    </h3>
+                    <p>
+                        Learn through hands-on projects
+                        and real-world technical experiences.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>
+                        Workshops
+                    </h3>
+                    <p>
+                        Participate in technical workshops
+                        conducted by experts and professionals.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>
+                        Mentorship
+                    </h3>
+                    <p>
+                        Get guidance from seniors, alumni
+                        and industry professionals.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>
+                        Networking
+                    </h3>
+                    <p>
+                        Connect with students, professionals
+                        and technical communities.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>
+                        Career Growth
+                    </h3>
+                    <p>
+                        Develop technical and professional
+                        skills for your future career.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>
+                        Innovation
+                    </h3>
+                    <p>
+                        Turn your ideas into innovative
+                        projects and meaningful solutions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- our evevts -->
+        <section class="events" id="events">
+            <div class="section-title">
+                <span>
+                    OUR EVENTS
+                </span>
+                <h2>
+                    Flagship Events
+                </h2>
+            </div>
+
+            <div class="event-grid">
+                <div class="event-card">
+                    <div class="event-image">
+                        Event Image
+                    </div>
+                    <h3>
+                        Technical Events
+                    </h3>
+                    <p>
+                        Explore technology through exciting
+                        technical competitions and activities.
+                    </p>
+                    <a href="#">
+                        Learn More →
+                    </a>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-image">
+                        Hackathon
+                    </div>
+                    <h3>
+                        Hackathon
+                    </h3>
+                    <p>
+                        Build innovative solutions and solve
+                        real-world problems with your team.
+                    </p>
+                    <a href="#">
+                        Learn More →
+                    </a>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-image">
+                        Convention
+                    </div>
+                    <h3>
+                        Annual Convention
+                    </h3>
+                    <p>
+                        Experience our annual technical
+                        gathering and flagship activities.
+                    </p>
+                    <a href="#">
+                        Learn More →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- contact -->
+        <section class="cta">
+            <h2>
+                Be Part of the Community
+            </h2>
+            <p>
+                Learn, build, collaborate and grow with
+                ISTE HIT Student Chapter.
+            </p>
+            <a href="#contact">
+                Join ISTE HIT SC
+            </a>
+        </section>
+    </main>
+
+    <!-- footer tab -->
+    <footer id="contact">
+        <div>
+            <h2>
+                ISTE HIT SC
+            </h2>
+            <p>
+                Technical Society at
+                Haldia Institute of Technology.
+            </p>
+            <p>
+                Haldia, West Bengal, India
+            </p>
+        </div>
+        <div>
+            <h3>
+                Quick Links
+            </h3>
+            <ul>
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#events">Events</a>
+                </li>
+                <li>
+                    <a href="#features">Activities</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>
+                Contact
+            </h3>
+            <p>
+                Haldia Institute of Technology
+            </p>
+            <p>
+                Haldia, West Bengal
+            </p>
+            <p>
+                India
+            </p>
+        </div>
+
+        <div class="social">
+            <h3>
+                Follow Us
+            </h3>
+            <a href="#">
+                Instagram
+            </a>
+            <a href="#">
+                LinkedIn
+            </a>
+            <a href="#">
+                Facebook
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
